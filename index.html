@@ -1,0 +1,28 @@
+<!doctype HTML>
+<html>
+<head>
+
+<script>
+    function httpGet(request) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", "https://www.thebluealliance.com/api/v3" + request);
+        xmlHttp.setRequestHeader("X-TBA-Auth-Key", 'djqd1L7U17fPWKWOvVkXBY4CmJ7Xtxo9KVMoWA0IGJDvAHEH3t5znDV7UL6uAp2H');
+        xmlHttp.send();
+        
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(xmlHttp)
+                document.getElementById('teamName').innerHTML = xmlHttp
+            }
+        }
+    }
+</script>
+
+</head>
+<body>
+    <button onclick="httpGet('/team/frc1640')"> BUTTON </button>
+    <p id="teamName"> </p>
+
+
+</body>
+</HTML>
