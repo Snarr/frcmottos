@@ -1,28 +1,97 @@
-<!doctype HTML>
-<html>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<script>
-    function httpGet(request) {
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "https://www.thebluealliance.com/api/v3" + request);
-        xmlHttp.setRequestHeader("X-TBA-Auth-Key", 'djqd1L7U17fPWKWOvVkXBY4CmJ7Xtxo9KVMoWA0IGJDvAHEH3t5znDV7UL6uAp2H');
-        xmlHttp.send();
-        
-        xmlHttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(xmlHttp)
-                document.getElementById('teamName').innerHTML = xmlHttp
-            }
-        }
-    }
-</script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 
-</head>
-<body>
-    <button onclick="httpGet('/team/frc1640')"> BUTTON </button>
-    <p id="teamName"> </p>
+    <title>Hello, world!</title>
+    
+	</head>
 
+  <body>
 
-</body>
-</HTML>
+		<div class="alert alert-warning alert-dismissible fade collapse container-fluid" id="alertText" role="alert">
+				<strong>Uh oh! </strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+		</div>
+
+		<div class="container-fluid allianceContainer">
+		<h3 class="text-center"> Settings </h2>
+		<form>
+		  <div class="form-group">
+			<input type="text" class="form-control allianceInput" id="apiKey" placeholder="TBA API Key" onchange="checkAPI(this.value);">
+		  </div>
+		  <div class="form-group">
+			<input type="text" class="form-control" id="eventKey" placeholder="Event Code">
+		  </div>
+		  <div class="form-group">
+			<input type="text" class="form-control" id="eventYear" placeholder="Event Year">
+		  </div>
+		</form>
+	</div>
+  	
+  	
+  <div class="container-fluid allianceContainer">
+		<h3 class="text-center"> Alliance #1 </h2>
+		<form>
+		  <div class="form-group">
+			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName1" placeholder="Alliance Member #1" onchange="checkTeam(this)">
+		  </div>
+		  <div class="form-group">
+			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName2" placeholder="Alliance Member #2" onchange="checkTeam(this)">
+		  </div>
+		  <div class="form-group">
+			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName3" placeholder="Alliance Member #3" onchange="checkTeam(this)"s>
+		  </div>
+		</form>
+	</div>
+
+	<div class="container-fluid allianceContainer">
+		<h3 class="text-center"> Alliance #2 </h2>
+		<form>
+			<div class="form-group">
+			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName4" placeholder="Alliance Member #1" onchange="checkTeam(this)">
+			</div>
+			<div class="form-group">
+			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName5" placeholder="Alliance Member #2" onchange="checkTeam(this)">
+			</div>
+			<div class="form-group">
+			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName6" placeholder="Alliance Member #3" onchange="checkTeam(this)"s>
+			</div>
+		</form>
+	</div>
+  
+  <div class="container-fluid allianceContainer bottomDiv">
+		<form>
+		  <div class="form-group">
+			  <button type="button" class="btn btn-danger btn-lg btn-block" onclick="calculate()">Calculate</button>
+		  </div>
+		</form>
+	</div>
+   
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		<script>
+				var readOnlyArray = document.getElementsByClassName('disableWithoutAPI')
+		
+				for (var i = 0; i < readOnlyArray.length; i++) {
+					readOnlyArray[i].setAttribute('readonly', 'readonly')
+				}
+		</script>
+    <link rel="stylesheet" href="style.css">
+		<script src="calculation.js">
+		</script>
+  </body>
+</html>

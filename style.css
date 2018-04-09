@@ -1,0 +1,34 @@
+body {
+	background-color: #2d3436;
+	padding: 15	px;
+}
+
+.allianceContainer {
+	background-color: #636e72;
+	border-radius: 0.6em;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	max-height: 500px;
+	max-width: 400px;
+	padding: 15px 30px 30px 30px;
+}
+
+.allianceInput {
+	border: medium solid #FFFFFF;
+}
+
+input {
+	color: #FFFFFF;
+}
+
+.disableWithoutAPI:read-only {
+	background-color: #c6c9cc;
+}
+
+h3 {
+	margin-bottom: 15px;
+}
+
+.bottomDiv {
+	padding-bottom: 5px
+}
