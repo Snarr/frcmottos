@@ -126,4 +126,4 @@ function checkCookiesForKey () {
   }
 }
 
-console.log()
+checkCookiesForKey()
