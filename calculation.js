@@ -39,7 +39,7 @@ function checkAPI (apiKey) {
       if (resp.status === 200) {
         document.getElementById('apiKey').style.border = 'medium solid #00b894'
 
-        setCookie('apiKeyCookie', apiKey, 1)
+        Cookies.set('apiKeyCookie', apiKey)
 
         console.log('Good Key!')
         var readOnlyArray = document.getElementsByClassName('disableWithoutAPI')
@@ -109,32 +109,21 @@ function winner (alliance1OPR, alliance2OPR) {
   document.getElementById('alertText').innerText = winMessage
 }
 
-function setCookie (cname, cvalue, exdays) {
-  var d = new Date()
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
-  var expires = 'expires=' + d.toGMTString()
-  document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
-}
-
-function getCookie (cname) {
-  var name = cname + '='
-  var decodedCookie = decodeURIComponent(document.cookie)
-  var ca = decodedCookie.split(';')
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i]
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1)
-    }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length)
-    }
-  }
-  return ''
-}
-
-function checkCookie () {
-  var apiKeyCookie = getCookie('apiKey')
-  if (apiKeyCookie !== '') {
-    console.log('Returned')
+function checkCookiesForKey () {
+  let cookie = Cookies.get('apiKeyCookie')
+  console.log(cookie)
+  if (cookie) {
+    fetch(`https://www.thebluealliance.com/api/v3/status?X-TBA-Auth-Key=${cookie}`)
+      .then((resp) => {
+        if (resp.status === 401) {
+          return
+        }
+        if (resp.status === 200) {
+          document.getElementById('apiKey').value = cookie
+          checkAPI(cookie)
+        }
+      })
   }
 }
+
+console.log()
