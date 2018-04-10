@@ -39,6 +39,8 @@ function checkAPI (apiKey) {
       if (resp.status === 200) {
         document.getElementById('apiKey').style.border = 'medium solid #00b894'
 
+        setCookie('apiKeyCookie', apiKey, 1)
+
         console.log('Good Key!')
         var readOnlyArray = document.getElementsByClassName('disableWithoutAPI')
 
@@ -120,10 +122,10 @@ function getCookie (cname) {
   var ca = decodedCookie.split(';')
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i]
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) === ' ') {
       c = c.substring(1)
     }
-    if (c.indexOf(name) == 0) {
+    if (c.indexOf(name) === 0) {
       return c.substring(name.length, c.length)
     }
   }
