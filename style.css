@@ -10,7 +10,7 @@ body {
 	margin-bottom: 15px;
 	max-height: 500px;
 	max-width: 400px;
-	padding: 15px 30px 30px 30px;
+	padding: 10px 30px 30px 30px;
 }
 
 .allianceInput {
@@ -31,4 +31,14 @@ h3 {
 
 .bottomDiv {
 	padding-bottom: 5px
+}
+
+.alert-warning {
+	max-width: 400px;
+	margin-top: 15px;
+}
+
+#quoteBox {
+	margin-top: 15px;
+	color: #dfe6e9;
 }

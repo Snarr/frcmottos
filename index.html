@@ -15,12 +15,20 @@
 
   <body>
 
-		<div class="alert alert-warning alert-dismissible fade collapse container-fluid" id="alertText" role="alert">
+		<div class="alert alert-warning alert-dismissible fade collapse container-fluid" id="winnerAlert" role="alert">
+			<strong>Hurrah!</strong><div id="alertText"></div>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade collapse container-fluid" role="alert">
 				<strong>Uh oh! </strong>
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 		</div>
+
+	<p class="h3 text-center" id="quoteBox">Made by Jacob Snarr</p>
 
 		<div class="container-fluid allianceContainer">
 		<h3 class="text-center"> Settings </h2>
@@ -93,7 +101,7 @@
 		</script>
 
 		<link rel="stylesheet" href="style.css">
-		
+		<script src="motto.js"></script>
 		<script src="calculation.js"></script>
   </body>
 </html>

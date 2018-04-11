@@ -105,7 +105,8 @@ function winner (alliance1OPR, alliance2OPR) {
   if (alliance1OPR === alliance2OPR) {
     winMessage = 'It\'s a tie!'
   }
-  document.getElementById('alertText').classList.add('show')
+  document.getElementById('winnerAlert').classList.add('show')
+  document.getElementById('winnerAlert').scrollIntoView()
   document.getElementById('alertText').innerText = winMessage
 }
 
