@@ -1,107 +1,48 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>FRC Quotes</title>
+		
+		<!-- FAVICON TAGS -->
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+		<link rel="manifest" href="favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<!-- END FAVICON TAGS -->
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-
-    <title>Hello, world!</title>
-    
 	</head>
 
-  <body>
+  <body onload="changeBackground()" style="background-color: #7f8c8d;">
 
-		<div class="alert alert-warning alert-dismissible fade collapse container-fluid" id="winnerAlert" role="alert">
-			<strong>Hurrah!</strong><div id="alertText"></div>
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			</button>
+		<div class="centered">
+			<a id="quoteBoxLink"><h1 id="quoteBox">Made by Jacob Snarr</h1></a>
 		</div>
-		<div class="alert alert-warning alert-dismissible fade collapse container-fluid" role="alert">
-				<strong>Uh oh! </strong>
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-		</div>
-
-	<p class="h3 text-center" id="quoteBox">Made by Jacob Snarr</p>
-
-		<div class="container-fluid allianceContainer">
-		<h3 class="text-center"> Settings </h2>
-		<form>
-		  <div class="form-group">
-			<input type="text" class="form-control allianceInput" id="apiKey" placeholder="TBA API Key" onchange="checkAPI(this.value);">
-		  </div>
-		  <div class="form-group">
-			<input type="text" class="form-control" id="eventKey" placeholder="Event Code">
-		  </div>
-		  <div class="form-group">
-			<input type="text" class="form-control" id="eventYear" placeholder="Event Year">
-		  </div>
-		</form>
-	</div>
-  	
-  	
-  <div class="container-fluid allianceContainer">
-		<h3 class="text-center"> Alliance #1 </h2>
-		<form>
-		  <div class="form-group">
-			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName1" placeholder="Alliance Member #1" onchange="checkTeam(this)">
-		  </div>
-		  <div class="form-group">
-			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName2" placeholder="Alliance Member #2" onchange="checkTeam(this)">
-		  </div>
-		  <div class="form-group">
-			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName3" placeholder="Alliance Member #3" onchange="checkTeam(this)"s>
-		  </div>
-		</form>
-	</div>
-
-	<div class="container-fluid allianceContainer">
-		<h3 class="text-center"> Alliance #2 </h2>
-		<form>
-			<div class="form-group">
-			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName4" placeholder="Alliance Member #1" onchange="checkTeam(this)">
-			</div>
-			<div class="form-group">
-			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName5" placeholder="Alliance Member #2" onchange="checkTeam(this)">
-			</div>
-			<div class="form-group">
-			<input type="text" class="form-control allianceInput disableWithoutAPI" id="teamName6" placeholder="Alliance Member #3" onchange="checkTeam(this)"s>
-			</div>
-		</form>
-	</div>
-  
-  <div class="container-fluid allianceContainer bottomDiv">
-		<form>
-		  <div class="form-group">
-			  <button type="button" class="btn btn-danger btn-lg btn-block" onclick="calculate()">Calculate</button>
-		  </div>
-		</form>
-	</div>
-   
-   
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<script src="js.cookie.js"></script>
-
-		<script>
-				var readOnlyArray = document.getElementsByClassName('disableWithoutAPI')
-		
-				for (var i = 0; i < readOnlyArray.length; i++) {
-					readOnlyArray[i].setAttribute('readonly', 'readonly')
-				}
-		</script>
 
 		<link rel="stylesheet" href="style.css">
 		<script src="motto.js"></script>
-		<script src="calculation.js"></script>
+
+		<script>
+			let colors = ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c']
+
+			function changeBackground() {
+				document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
+			}
+		</script>
+
   </body>
 </html>
