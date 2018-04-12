@@ -1,1 +1,1 @@
-FRC Quotes
+FRC Mottos
